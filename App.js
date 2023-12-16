@@ -14,16 +14,14 @@ export default function App() {
   const Stack = createStackNavigator();
   return (
     <Provider store ={store}>
+      <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
     <Stack.Screen name='HomeScreen' component={HomeScreen} options={{headerShown: false}} />
     <Stack.Screen name='MapScreen' component={MapScreen} options={{headerShown: false}} />
-
         </Stack.Navigator>
-      <SafeAreaProvider>
-      {/* <HomeScreen/> */}
-      </SafeAreaProvider>
       </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }

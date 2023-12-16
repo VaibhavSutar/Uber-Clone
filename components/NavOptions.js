@@ -3,6 +3,8 @@ import React from 'react'
 import {Icon} from "react-native-elements";
 import tw from 'twrnc';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { selectOrigin, setOrigin } from '../redux/slices/navSlice';
 const data = 
 [
     {
@@ -20,6 +22,7 @@ const data =
 ]
 const NavOptions = () => {
     const navigation = useNavigation();
+    const origin = useSelector(selectOrigin);
   return (
     <FlatList
     data={data}
@@ -28,6 +31,7 @@ const NavOptions = () => {
     renderItem={({item})=> 
 (
     <TouchableOpacity 
+    disabled={!origin}
     onPress={()=>
     {
         navigation.navigate(item.screen)
