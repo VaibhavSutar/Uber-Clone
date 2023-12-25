@@ -6,15 +6,15 @@ const data=
 [
     {
         id: 1,
-        icon: "home",
-        location: "Home",
-        destination: "Code Street, London, Uk"
+        icon: "location",
+        location: "Gorai Creek",
+        destination: "Lokmanya Tilak Road,Gorai 3, Borivali-West"
     },
     {
     id: 2,
-    icon: "briefcase",
-    location: "Work",
-    destination: "london Eye, London, Uk"
+    icon: "location",
+    location: "Mira Road Railway Staion",
+    destination: "Mira Road,Palghar"
     }
     
 ]
@@ -23,7 +23,7 @@ const NavFavourites = () => {
    data={data}
    keyExtractor={(item)=> item.id}
    ItemSeparatorComponent={()=>{
-    <View style={[tw`border-t border-gray-200`,{height: 0.5}]}></View>
+    <View style={[tw`flex-col border-2 border-gray-200`,{height: 0.5}]}></View>
    }}
    renderItem={({item : {location,destination,icon}})=>
    (
@@ -32,8 +32,8 @@ const NavFavourites = () => {
     style={tw`mr-4 rounded-full bg-gray-300 p-3`}
     name={icon}
     type='ionicon'
-    color="white"
-    size={18}
+    color="black"
+    size={20}
     />
     <View>
       <Text style={tw`font-semibold text-lg`}>{location}</Text>
