@@ -62,7 +62,10 @@ function Tabnav() {
         tabBarInactiveTintColor: "gray", // Set the color for inactive tabs
         tabBarStyle: {
           backgroundColor: "#ffff", // Set the background color of the tab bar
-        },
+          shadowColor: "black",
+          shadowOpacity: 0.1,
+
+          },
         tabBarLabelStyle: {
           fontSize: 12, // Adjust label font size if needed
         },
