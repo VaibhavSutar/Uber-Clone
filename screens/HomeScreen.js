@@ -12,7 +12,7 @@ import NavFavourites from '../components/NavFavourites';
 import SearchButton from '../components/HomeComponents/SearchButton';
 import SuggestionsComp from '../components/HomeComponents/SuggestionsComp';
 import BannerButtons from '../components/HomeComponents/BannerButtons/BannerButtons';
-import { Data1, Data2 } from '../lib/data';
+import { Data1, Data2, SuggestionsOptions } from '../lib/data';
 import PromotionBanner from '../components/HomeComponents/promotionBanner/PromotionBanner';
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -20,11 +20,11 @@ const HomeScreen = () => {
      <SafeAreaView style={tw`bg-white h-full`}>
       <ScrollView>
        <View style={
-         tw `p-5 mt-1 bg-white`
+         tw `pl-1 pr-1 mt-3 bg-white`
         }>
         <SearchButton />
         <NavFavourites/>
-        <SuggestionsComp />
+        <SuggestionsComp  data={SuggestionsOptions}/>
         <PromotionBanner data={Data2}/>
         <BannerButtons data={Data1} />
         <BannerButtons data={Data1} />

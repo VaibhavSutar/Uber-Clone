@@ -36,7 +36,7 @@ function LogoTitle() {
 }
 function Tabnav() {
   return (
-    <Tab.Navigator
+    <Tab.Navigator 
       initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarLabel: route.name,

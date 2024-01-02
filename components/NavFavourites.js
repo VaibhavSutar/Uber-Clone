@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import tw from 'twrnc';
 import { Icon } from 'react-native-elements';
@@ -13,36 +13,45 @@ const data=
     {
     id: 2,
     icon: "location",
-    location: "Mira Road Railway Staion",
+    location: "Mira Road",
     destination: "Mira Road,Palghar"
     }
     
 ]
-const NavFavourites = () => {
+const NavFavourites = () => {    
   return <FlatList
    data={data}
    keyExtractor={(item)=> item.id}
    ItemSeparatorComponent={()=>{
-    <View style={[tw`flex-col border-2 border-gray-200`,{height: 0.5}]}></View>
-   }}
-   renderItem={({item : {location,destination,icon}})=>
-   (
-      <TouchableOpacity style={tw`flex-row items-center p-5`}>
+    <View style={tw`flex-col border-b-2 border-gray-100 ml-13 w-90`} ></View>
+    }}
+    renderItem={({item : {location,destination,icon}})=>
+    (
+      <View>
+
+      <TouchableOpacity style={tw`flex-row items-center pl-1 m-1 pr-3 p-2`}>
     <Icon 
-    style={tw`mr-4 rounded-full bg-gray-300 p-3`}
+    style={tw`rounded-full bg-gray-300 p-1.3`}
     name={icon}
     type='ionicon'
     color="black"
     size={20}
     />
-    <View>
-      <Text style={tw`font-semibold text-lg`}>{location}</Text>
+    <View style={tw`pl-4 ml-3 w-80 p-2`}>
+      <Text style={tw`font-medium text-lg`}>{location}</Text>
       <Text style={tw`text-gray-500`}>{destination}</Text>
-    </View>
+      </View>
+      <Icon 
+    style={tw`pr-3`}
+    name="chevron-forward-outline"
+    type='ionicon'
+    color="gray"
+    size={20}
+    />
  </TouchableOpacity>
+ {/* <View style={tw`flex-col border-b-2 border-gray-100 ml-13 w-90`} ></View> */}
+    </View>
 )}
 />
 }
 export default NavFavourites
-
-const styles = StyleSheet.create({})

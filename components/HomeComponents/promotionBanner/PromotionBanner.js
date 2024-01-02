@@ -17,7 +17,7 @@ const PromotionBanner = ({data}) => {
         {
           navigation.navigate(item.screen)
         }}>
-            <View style={[tw`mt-4 items-center w-90 h-35 bg-${item.color} flex-row rounded-4`]}>
+            <View style={[tw`mt-4 items-center w-85 h-35 bg-${item.color} flex-row rounded-4`]}>
            {/* {Title and icon} */}
             <View>
             <Text style={tw`font-medium text-xl text-${item.text_color} pl-3 w-50`}>{item.title}</Text>
@@ -39,7 +39,7 @@ const PromotionBanner = ({data}) => {
           <Image
             style={[
               tw`rounded-4 rounded-none rounded-tr-3 rounded-br-3`,
-              { width: 160, height:140, resizeMode: "cover" },
+              { width: 140, height:140, resizeMode: "cover" },
             ]}
             source={{ uri: item.img }}
           />
@@ -52,11 +52,3 @@ const PromotionBanner = ({data}) => {
 }
 
 export default PromotionBanner
-
-//  {Tochable 
-// view with background and title and a tochable to navigate or on a terms and condition page
-// }
-
-
-
-

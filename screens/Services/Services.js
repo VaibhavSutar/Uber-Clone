@@ -1,39 +1,21 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, Platform } from 'react-native'
 import React from 'react'
 import tw from 'twrnc';
-const data = 
-[
-    {
-        id: "1",
-        title: "Shuttle",
-        image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberX.png",
-        screen: "Services"
-    },
-    {
-        id: "2",
-        title: "Ride",
-        image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberX.png",
-        screen: "Services"
-    },
-    {
-        id: "3",
-        title: "Intercity",
-        image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberX.png",
-        screen: "Services"
-    },
-    {
-        id: "4",
-        title: "Reserve",
-        image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberX.png",
-        screen:"Services"
-    }
-]
+import SuggestionsButtons from '../../components/HomeComponents/SuggestionsButtons/SuggestionsButtons';
+import BigSuggestionsButtons from '../../components/HomeComponents/SuggestionsButtons/BigSuggestionsButtons';
+import { ServicesOptions , ServicesOptions2} from '../../lib/data';
 const Services = () => {
   return (
-    <SafeAreaView style={tw`bg-white flex-1`}>
+    <SafeAreaView style={tw`bg-white flex-1 mt-12`}>
       <Text style={tw`text-4xl font-bold pl-4 m-1`}>Services</Text>
-      <View style={tw`m-5`}>
+      <View style={tw`mt-8 pl-7`}>
         <Text style={tw`text-xl font-semibold`}>Go anywhere, get anything</Text>
+      </View >
+      <View style={tw`mt-2 pl-${Platform.OS === 'ios' ? 6 : 0}`}>
+      <BigSuggestionsButtons data={ServicesOptions2} />
+      </View>
+      <View style={tw`pl-${Platform.OS === 'ios' ? 4 : 1}`}>
+      <SuggestionsButtons data={ServicesOptions} />
       </View>
     </SafeAreaView>
   )

@@ -9,11 +9,8 @@ const MapScreen = () => {
   const Stack = createStackNavigator();
   return (
     <View>
-      <View style={tw`h-1/2 bg-black`}>
-      <Map />
-      </View>
-      <View style={tw`h-1/2 bg-red-100`}>
-      <Stack.Navigator>
+      <View style={tw`h-1/3.7 bg-gray-400`}>
+      {/* <Stack.Navigator>
         <Stack.Screen
         name='NavigateCard'
         component={NavigateCard}
@@ -21,14 +18,11 @@ const MapScreen = () => {
           headerShown: false
         }}
   />
-  <Stack.Screen
-        name='RideOptionsCard'
-        component={RideOptionsCard}
-        options={{
-          headerShown: false
-        }}
-  />
-      </Stack.Navigator>
+      </Stack.Navigator> */}
+      <NavigateCard/>
+      </View>
+      <View style={tw`h-full bg-red-100`}>
+      <Map />
       </View>
     </View>
   )
