@@ -7,7 +7,7 @@ const BigSuggestionsButtons = ({data}) => {
         <FlatList 
         data={data}
         horizontal
-        keyExtractor={(item)=> item.id}
+        keyExtractor={(item)=> item.key}
         renderItem={({item})=> 
         <View style={tw`flex-col items-center pl-4 pr-${Platform.OS == "ios" ? 4: 0}`}>
             {/* {Promo is left} */}
