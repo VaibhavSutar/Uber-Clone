@@ -6,7 +6,9 @@ import { setDestination,setOrigin } from '../../../redux/slices/navSlice';
 import tw from "twrnc"
 import React from 'react'
 import { Icon } from 'react-native-elements';
-
+import { Platform } from 'react-native';
+import { PLATFORMS } from 'twrnc/dist/esm/types';
+const containerWidth = Platform.OS === "android" ? 280 : 350;
 const AutoCompleteComp = () => {
   const dispatch = useDispatch();
   return (
@@ -23,15 +25,17 @@ const AutoCompleteComp = () => {
             ))
             console.log(data);
           }}
-          renderDescription={row => row.description}
+          renderDescription={row => {row.description ;console.log(row.description)}}
           query={{
             key: GOOGLE_MAPS_APIKEY,
             language:"en"
           }}
-          fetchDetails={true}
-          returnKeyType={"search"}
+          currentLocation={true}
+          // fetchDetails={false}
+          // returnKeyType={"search"}
           placeholder='Where to?'
-          listViewDisplayed='auto'
+            // enableHighAccuracyLocation={true}
+          // listViewDisplayed='auto'
           enablePoweredByContainer={false}
           minLength={2}
          nearbyPlacesAPI="GooglePlacesSearch"
@@ -49,6 +53,7 @@ const AutoCompleteComp = () => {
             ))
             console.log(data);
           }}
+          renderDescription={row => {row.description ;console.log(row.description)}}
           query={{
             key: GOOGLE_MAPS_APIKEY,
             language:"en"
@@ -62,11 +67,7 @@ const AutoCompleteComp = () => {
          nearbyPlacesAPI="GooglePlacesSearch"
          debounce={400}
         />
-        <View style={tw`rounded-full`}>
-            <TouchableOpacity style={tw`bg-gray-200 rounded-full w-8 h-8`}>
-                <Icon style={tw`p-1`} name="add" color="black" />
-            </TouchableOpacity>
-        </View>
+        
     </View>
   )
 }
@@ -80,9 +81,9 @@ const InputStyles =
     {
       backgroundColor: "white",
       padding: 0,
-      paddingTop: 10,
+      paddingTop: 0,
       flex: 0,
-      width: 390,
+      width: containerWidth,
     },
     textInput:
     {
@@ -93,8 +94,13 @@ const InputStyles =
     textInputContainer:
     {
       paddingHorizontal: 20,
-      paddingBottom: 10,
-      width: 380,
+      paddingBottom: 0,
+      width: containerWidth,
+    },
+    listView:
+    {
+      width:0,
+      height: 0
     }
   }
  );

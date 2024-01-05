@@ -1,18 +1,47 @@
 import { View, Text } from 'react-native'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import MapView, { Marker } from 'react-native-maps'
 import tw from 'twrnc';
+import * as Location from "expo-location";
 import { useDispatch, useSelector } from 'react-redux';
 import {GOOGLE_MAPS_APIKEY} from "@env";
 import { selectDestination, selectOrigin, setTravelTimeInformation } from '../redux/slices/navSlice'
+// import Geolocation from '@react-native-community/geolocation';
 import MapViewDirections from 'react-native-maps-directions';
 const Map = () => {
     const origin = useSelector(selectOrigin)
     const destination = useSelector(selectDestination)
     const mapRef = useRef(null);
     const dispatch = useDispatch();
+    const [currentLocation, setCurrentLocation] = useState(null);
+  const [initialLoc, setInitialLoc] = useState(null);
     console.log(origin);
     console.log(destination);
+    console.log("Initial Region",initialLoc);
+    console.log("Current location",currentLocation);
+
+
+    useEffect(() => {
+      const getLocation = async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          console.log("Permission to access location was denied");
+          return;
+        }
+  
+        let location = await Location.getCurrentPositionAsync({});
+        setCurrentLocation(location.coords);
+  
+        setInitialLoc({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        });
+      };
+  
+      getLocation();
+    }, []);
     useEffect(()=>
     {
         if(!origin || !destination) return;
@@ -43,11 +72,12 @@ const Map = () => {
     <MapView
     ref={mapRef}
     style={tw`flex-1`}
+    showsMyLocationButton="true"
     mapType='mutedStandard'
     // initialRegion={
     //     {
-    //         latitude: origin.location.lat,
-    //         longitude: origin.location.lng,
+    //         latitude: initialLoc.latitude,
+    //         longitude: initialLoc.longitude,
     //         latitudeDelta: 0.005,
     //         longitudeDelta: 0.005
     //     }
@@ -89,6 +119,18 @@ const Map = () => {
        title='Destination'
        description={destination.description}
        identifier='destination'
+      />
+      }
+      {currentLocation!=null && 
+      <Marker
+       coordinate={
+        {
+          longitude: currentLocation.longitude,
+          latitude: currentLocation.latitude,
+        }
+       } 
+       title='Current Location'
+       identifier=''
       />
       }
     </MapView>

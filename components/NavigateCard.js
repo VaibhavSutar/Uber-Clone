@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import React from 'react'
 import tw from 'twrnc';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -19,15 +19,22 @@ const NavigateCard = () => {
       <View>
         <View style={tw`flex-row items-center px-4 justify-between`}>
           <TouchableOpacity onPress={()=> {navigation.navigate("Home")}}>
-        <Icon name='arrow-back' type='ionicons' color="black" size={25} style='outline' />
+        <Icon name='arrow-back' type='ionicons' color="black" size={30} style='outline' />
           </TouchableOpacity>
-      <Text style={tw`text-center py-1 pr-33 text-xl`}>Plan your ride</Text>
+      <Text style={tw`text-center py-1 pr-33 text-xl font-semibold`}>Plan your ride</Text>
         </View>
         <ScrollButtons data={ScrollbtnOptions} />
-      <View style={tw``}>
+      <View style={tw`flex-row mt-1 p-1 border-b-4 border-gray-200`}>
+        <View>
+          
+        </View>
         <AutoCompleteComp />
+      <View style={tw`rounded-full items-center mt-6 `}>
+            <TouchableOpacity style={tw`bg-gray-200 rounded-full w-10 h-10`}>
+                <Icon style={tw`p-2`} name="add" color="black" />
+            </TouchableOpacity>
+        </View>
       </View>
-
       </View>
     </SafeAreaView>
   )
