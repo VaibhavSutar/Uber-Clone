@@ -1,16 +1,43 @@
 import { View, Text, Platform } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState , useEffect} from "react";
 import tw from "twrnc";
+import * as Location from "expo-location";
 import Map from "../components/Map";
 import { createStackNavigator } from "@react-navigation/stack";
 import NavigateCard from "../components/NavigateCard";
-import BottomSheet,{BottomSheetView} from "@gorhom/bottom-sheet"
 import RideOptionsCard from "../components/RideOptionsCard";
+import BottomView from "../components/bottomSheet/BottomSheet";
+
 const MapScreen = () => {
   const Stack = createStackNavigator();
-  const sheetRef = useRef<BottomSheet>(null);
-  const [isOpen, setIsOpen]= useState(true);
-  const snapPoints = ["50%","70%","100%"];
+  
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [initialLoc, setInitialLoc] = useState(null);
+    console.log("Initial Region",initialLoc);
+    console.log("Current location",currentLocation);
+
+
+    useEffect(() => {
+      const getLocation = async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          console.log("Permission to access location was denied");
+          return;
+        }
+  
+        let location = await Location.getCurrentPositionAsync({});
+        setCurrentLocation(location.coords);
+  
+        setInitialLoc({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        });
+      };
+  
+      getLocation();
+    }, []);
   return (
     <View style={tw`flex-1 bg-white`}>
        <View
@@ -30,12 +57,8 @@ const MapScreen = () => {
         <NavigateCard />
       </View>
       <View style={tw`h-full bg-red-100`}>
-        <Map />
-        <BottomSheet useRef={sheetRef} snapPoints={snapPoints}>
-          <BottomSheetView>
-            <Text>Hello</Text>
-          </BottomSheetView>
-        </BottomSheet>
+        <Map initialLoc={initialLoc} />
+        <BottomView/>
       </View>
     </View>
   );
