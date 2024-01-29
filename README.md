@@ -11,5 +11,5 @@ This is a Uber Clone made using React-Native styled used Tailwind
 ## Activity
 <img src="https://i.ibb.co/47qwfqp/Simulator-Screenshot-i-Phone-15-Pro-Max-2024-01-29-at-22-53-35.png" alt="Simulator-Screenshot-i-Phone-15-Pro-Max-2024-01-29-at-22-53-35" alt="Home Page" width="30%" height="50%">
 
-### Account Page
+## Account Page
 <img src="https://i.ibb.co/qMVT9Z7/Simulator-Screenshot-i-Phone-15-Pro-Max-2024-01-29-at-22-53-38.png" alt="Simulator-Screenshot-i-Phone-15-Pro-Max-2024-01-29-at-22-53-38" alt="Home Page" width="30%" height="50%">
