@@ -29,7 +29,7 @@ const NavigateCard = () => {
           
         </View>
         <AutoCompleteComp />
-      <View style={tw`rounded-full items-center mt-6 `}>
+      <View style={tw`rounded-full items-center mt-6 h-30 `}>
             <TouchableOpacity style={tw`bg-gray-200 rounded-full w-10 h-10`}>
                 <Icon style={tw`p-2`} name="add" color="black" />
             </TouchableOpacity>

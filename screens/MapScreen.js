@@ -41,7 +41,7 @@ const MapScreen = () => {
   return (
     <View style={tw`flex-1 bg-white`}>
        <View
-        style={tw`h-1/${Platform.OS === "android" ? 4 : 3.6} mt-${
+        style={tw`h-1/${Platform.OS === "android" ? 2 : 2.9} mt-${
           Platform.OS === "android" ? 10 : 0
         }`}
       >
@@ -57,7 +57,7 @@ const MapScreen = () => {
         <NavigateCard />
       </View>
       <View style={tw`h-full bg-red-100`}>
-        <Map initialLoc={initialLoc} />
+        <Map />
         <BottomView/>
       </View>
     </View>
